@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 2023 (c) MaoHuPi -->
+	<!-- PerfectLoopJS/demo/index.html -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Music Player</title>
+	<style>
+		html, body {
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+		h1 {
+			position: absolute;
+			top: 50%; left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+	</style>
+	<script src="../perfectloop.js"></script>
+</head>
+<body>
+	<h1>Click somewhere to play/pause the music.</h1>
+	<script>
+		let pl = new PerfectLoop();
+		let audioPath = 'audio/MaoHuPi - goodbyWorld.wav';
+		for(let _ = 0; _ < 2; _++){
+			let audio = new Audio();
+			audio.src = audioPath;
+			pl.push(audio);
+		}
+		document.body.addEventListener('click', () => {
+			pl.paused ? pl.play() : pl.pause();
+		});
+	</script>
+</body>
+</html>
